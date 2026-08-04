@@ -155,20 +155,12 @@ code {
   justify-content: space-between;
 }
 
-.sidebar .brand { margin-bottom: 4px; }
+.sidebar .brand { margin-bottom: 28px; }
 
 .sidebar .brand-logo {
   width: 132px;
   height: auto;
   display: block;
-}
-
-.sidebar .tagline {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 28px;
 }
 
 .sidebar nav h4 {
@@ -290,42 +282,11 @@ code {
 
 header.page-header {
   position: relative;
-  margin: 0 -48px 56px;
-  padding: 96px 48px 88px;
-  min-height: 46vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 0 -48px 0;
+  padding: 88px 48px 56px;
   overflow: hidden;
-  background: var(--dark-blue);
-  color: var(--white);
-}
-
-header.page-header::before,
-header.page-header::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-header.page-header::before {
-  width: 420px;
-  height: 420px;
-  background: var(--blue-1);
-  top: -220px;
-  right: -100px;
-}
-
-header.page-header::after {
-  width: 320px;
-  height: 320px;
-  background: var(--green-1);
-  bottom: -200px;
-  left: 10%;
-  opacity: 0.35;
+  background: linear-gradient(180deg, var(--blue-5) 0%, var(--white) 100%);
+  color: var(--dark-blue);
 }
 
 header.page-header .eyebrow {
@@ -337,8 +298,8 @@ header.page-header .eyebrow {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: var(--green-1);
-  color: var(--dark-blue);
+  background: var(--blue-4);
+  color: var(--blue-1);
   padding: 7px 16px;
   border-radius: var(--radius-pill);
   margin-bottom: 24px;
@@ -347,12 +308,13 @@ header.page-header .eyebrow {
 
 header.page-header h1 {
   position: relative;
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   margin: 0 0 18px;
-  max-width: 720px;
+  max-width: 680px;
+  color: var(--dark-blue);
 }
 
 header.page-header h1 .grad {
@@ -364,9 +326,78 @@ header.page-header h1 .grad {
 
 header.page-header p {
   position: relative;
-  color: rgba(255,255,255,0.72);
-  font-size: 1.05rem;
+  color: var(--grey-1);
+  font-size: 1.1rem;
   max-width: 600px;
+  margin: 0 0 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), background 0.15s var(--ease);
+}
+
+.btn-primary {
+  background: var(--blue-1);
+  color: #fff;
+  border: 1.5px solid var(--blue-1);
+}
+
+.btn-primary:hover {
+  background: var(--secondary-dark-blue);
+  border-color: var(--secondary-dark-blue);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--dark-blue);
+  border: 1.5px solid var(--grey-3);
+}
+
+.btn-secondary:hover {
+  border-color: var(--blue-1);
+  color: var(--blue-1);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.trusted-by {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  padding-top: 28px;
+  border-top: 1px solid var(--grey-3);
+}
+
+.trusted-by .trusted-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--grey-1);
+  margin-right: 4px;
+}
+
+.trusted-by .trusted-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--grey-2);
 }
 
 section.ds-section {
