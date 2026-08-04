@@ -193,7 +193,7 @@ code {
 
 .topbar-brand:hover { opacity: 0.75; }
 
-.topbar-brand .brand-logo { height: 26px; width: auto; display: block; }
+.topbar-brand .brand-logo { height: 26px; width: auto; }
 
 .hide-on-dark { display: inline-block; }
 .hide-on-light { display: none; }
