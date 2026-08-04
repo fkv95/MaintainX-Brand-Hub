@@ -1106,3 +1106,36 @@ table.spec-table th {
 .cta-text.state-focused { box-shadow: 0 0 0 4px var(--blue-3); }
 .cta-text.state-pressed { color: var(--grey-1); }
 .cta-text.state-disabled { color: var(--grey-2); cursor: not-allowed; }
+
+/* Logo showcase — large full-width colorway blocks (Colors/Typography-scale
+   presentation, one block per surface the wordmark is used on) */
+.logo-showcase {
+  border: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.logo-showcase-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 40px;
+}
+
+.logo-showcase-block.light { background: var(--blue-5); }
+.logo-showcase-block.dark { background: var(--dark-blue); border-top: var(--border); }
+
+.logo-showcase-block img { height: 56px; width: auto; }
+
+.logo-showcase-captions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  font-size: 0.85rem;
+  color: var(--grey-1);
+  margin-bottom: 28px;
+}
+
+.logo-showcase-captions strong { color: var(--dark-blue); }
+.logo-showcase-captions a { font-weight: 600; }
