@@ -885,22 +885,44 @@ table.spec-table th {
   header.page-header { margin: 0 -20px 40px; padding: 40px 20px 32px; }
 }
 
-/* BUTTONS / CTAs — Figma: Web Library > Button component */
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  padding: 24px;
+/* BUTTONS / CTAs — Figma: Web Library > Button component (all states) */
+.cta-group {
+  margin-bottom: 32px;
   border: var(--border);
   border-radius: var(--radius-sm);
-  margin-bottom: 24px;
+  overflow: hidden;
 }
 
-.cta-row-dark {
-  background: var(--blue-1);
-  border-color: var(--blue-1);
+.cta-group-dark { border-color: var(--blue-1); }
+
+.cta-matrix {
+  display: grid;
+  grid-template-columns: 72px repeat(3, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 20px;
+  background: var(--white);
 }
+
+.cta-group-dark .cta-matrix { background: var(--blue-1); }
+
+.cta-matrix-head {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--grey-1);
+}
+
+.cta-group-dark .cta-matrix-head { color: var(--blue-3); }
+
+.cta-matrix-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grey-1);
+}
+
+.cta-group-dark .cta-matrix-label { color: var(--blue-3); }
 
 .cta {
   display: inline-flex;
@@ -916,14 +938,10 @@ table.spec-table th {
   white-space: nowrap;
   cursor: pointer;
   background: none;
+  justify-self: start;
 }
 
 .cta svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-.cta-primary { background: var(--blue-1); color: #fff; }
-.cta-secondary { border: 2px solid var(--blue-1); color: var(--blue-1); padding: 6px 14px; }
-.cta-white { background: #fff; color: var(--blue-1); }
-.cta-secondary-white { border: 2px solid #fff; color: #fff; padding: 6px 14px; }
 
 .cta-icon-only { padding: 8px; }
 .cta-icon-only.cta-secondary, .cta-icon-only.cta-secondary-white { padding: 6px; }
@@ -937,8 +955,44 @@ table.spec-table th {
   font-weight: 600;
   font-size: 13px;
   line-height: 18px;
-  color: var(--dark-blue);
   cursor: pointer;
+  justify-self: start;
+  border-radius: 4px;
 }
 
 .cta-text svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+/* Primary */
+.cta-primary { background: var(--blue-1); color: #fff; }
+.cta-primary.state-hover { background: var(--blue-2); border: 1px solid var(--blue-1); }
+.cta-primary.state-focused { background: var(--blue-1); box-shadow: 0 0 0 4px var(--blue-3); }
+.cta-primary.state-pressed { background: var(--blue-3); }
+.cta-primary.state-disabled { background: var(--grey-2); cursor: not-allowed; }
+
+/* Secondary */
+.cta-secondary { border: 2px solid var(--blue-1); color: var(--blue-1); padding: 6px 14px; }
+.cta-secondary.state-hover { background: var(--blue-4); border-color: transparent; }
+.cta-secondary.state-focused { box-shadow: 0 0 0 4px var(--blue-3); }
+.cta-secondary.state-pressed { background: var(--blue-1); color: #fff; }
+.cta-secondary.state-disabled { border-color: var(--grey-2); color: var(--grey-2); cursor: not-allowed; }
+
+/* White */
+.cta-white { background: #fff; color: var(--blue-1); }
+.cta-white.state-hover { background: var(--blue-3); }
+.cta-white.state-focused { box-shadow: 0 0 0 4px var(--blue-3); }
+.cta-white.state-pressed { background: var(--blue-4); }
+.cta-white.state-disabled { background: var(--grey-2); color: #fff; cursor: not-allowed; }
+
+/* Secondary White */
+.cta-secondary-white { border: 2px solid #fff; color: #fff; padding: 6px 14px; }
+.cta-secondary-white.state-hover { background: var(--blue-2); border-color: transparent; }
+.cta-secondary-white.state-focused { box-shadow: 0 0 0 4px var(--blue-3); }
+.cta-secondary-white.state-pressed { background: var(--blue-3); border-color: var(--blue-3); }
+.cta-secondary-white.state-disabled { border-color: var(--grey-2); color: var(--grey-2); cursor: not-allowed; }
+
+/* Tertiary (text link) */
+.cta-text { color: var(--dark-blue); }
+.cta-text.state-hover { color: var(--blue-1); text-decoration: underline; }
+.cta-text.state-focused { box-shadow: 0 0 0 4px var(--blue-3); }
+.cta-text.state-pressed { color: var(--grey-1); }
+.cta-text.state-disabled { color: var(--grey-2); cursor: not-allowed; }
