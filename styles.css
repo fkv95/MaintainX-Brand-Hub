@@ -1164,7 +1164,7 @@ table.spec-table th {
   margin-bottom: 28px;
 }
 
-.logo-rect-row .logo-rect { padding: 40px; }
+.logo-rect-row .logo-rect { padding: 40px; aspect-ratio: 1 / 1; }
 .logo-rect-row .logo-rect img { max-height: 72px; max-width: 72px; }
 
 .logo-rect {
@@ -1215,6 +1215,20 @@ table.spec-table th {
 .lockup-label {
   font-weight: 600;
   color: var(--dark-blue);
-  margin: 0 0 10px;
+  margin: 32px 0 10px;
   font-size: 0.95rem;
+}
+
+.lockup-label:first-of-type { margin-top: 0; }
+
+#assist h3.group-title {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: var(--border);
+}
+
+#assist h3.group-title:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
