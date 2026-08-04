@@ -1107,8 +1107,7 @@ table.spec-table th {
 .cta-text.state-pressed { color: var(--grey-1); }
 .cta-text.state-disabled { color: var(--grey-2); cursor: not-allowed; }
 
-/* Logo showcase — large full-width colorway blocks (Colors/Typography-scale
-   presentation, one block per surface the wordmark is used on) */
+/* Logo showcase — one square per colorway */
 .logo-showcase {
   border: var(--border);
   border-radius: var(--radius);
@@ -1116,17 +1115,25 @@ table.spec-table th {
   margin-bottom: 12px;
 }
 
+.logo-showcase-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .logo-showcase-block {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 90px 40px;
+  aspect-ratio: 1 / 1;
+  padding: 32px;
 }
 
-.logo-showcase-block.light { background: var(--blue-5); }
-.logo-showcase-block.dark { background: var(--dark-blue); border-top: var(--border); }
+.logo-showcase-3 .logo-showcase-block + .logo-showcase-block { border-left: var(--border); }
 
-.logo-showcase-block img { height: 56px; width: auto; }
+.logo-showcase-block.light { background: var(--blue-5); }
+.logo-showcase-block.dark { background: var(--dark-blue); }
+
+.logo-showcase-block img { width: 100%; height: auto; max-height: 46px; }
 
 .logo-showcase-captions {
   display: flex;
