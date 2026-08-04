@@ -134,6 +134,15 @@ code {
   font-size: 0.9em;
 }
 
+/* App frame — matches the real Geist docs shell: a bordered column capped
+   at 1220px and centered, not full-bleed to the viewport edge. */
+.app-shell {
+  max-width: 1220px;
+  margin: 0 auto;
+  border-left: var(--border);
+  border-right: var(--border);
+}
+
 /* Top bar */
 .topbar {
   position: sticky;
@@ -143,7 +152,7 @@ code {
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 0 20px;
+  padding: 0 16px;
   background: var(--white);
   border-bottom: var(--border);
 }
@@ -196,34 +205,38 @@ code {
   overflow-y: auto;
   background: var(--white);
   color: var(--dark-blue);
-  padding: 20px 14px;
+  padding: 16px 24px 14px;
   border-right: var(--border);
 }
 
 .sidebar nav h4 {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--grey-1);
-  margin: 20px 10px 6px;
+  color: var(--dark-blue);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin: 4px 0 2px;
 }
 
-.sidebar nav h4:first-child { margin-top: 6px; }
+.sidebar nav h4:first-child { margin-top: 0; }
 
 .sidebar nav ul {
   list-style: none;
-  margin: 0;
+  margin: 0 0 16px;
   padding: 0;
 }
 
 .sidebar nav a {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
+  height: 40px;
   color: var(--grey-1);
-  padding: 7px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 0.88rem;
-  margin-bottom: 1px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-bottom: 2px;
   transition: background 0.12s var(--ease), color 0.12s var(--ease);
 }
 
@@ -234,13 +247,13 @@ code {
 }
 
 .sidebar nav a:hover {
-  background: var(--blue-5);
+  background: rgba(0, 30, 64, 0.05);
   color: var(--dark-blue);
   text-decoration: none;
 }
 
 .sidebar nav a.active {
-  background: var(--grey-3);
+  background: rgba(0, 30, 64, 0.07);
   color: var(--dark-blue);
   text-decoration: none;
   font-weight: 600;
