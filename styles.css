@@ -774,7 +774,7 @@ h3.group-title {
   padding: 24px 16px;
   gap: 24px;
   aspect-ratio: 1 / 1;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .badge-item-label {
