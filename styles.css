@@ -193,7 +193,7 @@ code {
 
 .topbar-brand:hover { opacity: 0.75; }
 
-.topbar-brand .brand-logo { height: 26px; width: auto; }
+.topbar-brand .brand-logo { height: 29px; width: auto; }
 
 .hide-on-dark { display: inline-block; }
 .hide-on-light { display: none; }
@@ -553,6 +553,18 @@ h3.group-title {
   letter-spacing: 0.05em;
   color: var(--grey-1);
   margin: 28px 0 14px;
+}
+
+#colors h3.group-title {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: var(--border);
+}
+
+#colors h3.group-title:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 /* Color swatches */
@@ -1045,8 +1057,8 @@ table.spec-table th {
 .cta-showcode pre {
   margin: 0;
   padding: 20px 24px;
-  background: var(--dark-blue);
-  color: var(--blue-4);
+  background: #fff;
+  color: #000;
   overflow-x: auto;
   font-family: var(--font-mono);
   font-size: 0.8rem;
