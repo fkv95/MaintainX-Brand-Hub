@@ -75,6 +75,7 @@
   </aside>
 
   <main class="content">
+    <div class="view" id="view-intro">
     <header class="page-header">
       <h1>MaintainX Design System</h1>
       <p>Colors, typography, voice, logos, and iconography — sourced from the official 2025 Brand Guidelines, the Writing Style Guide, and the <code>Visual Library</code> Figma file. Copy the tokens. Follow the rules. Ship it.</p>
@@ -129,11 +130,12 @@
         <div class="text"><h4>Badges</h4><p>Current G2 and review site badges.</p></div>
       </a>
     </div>
+    </div>
 
     <p class="no-results" id="no-results">No matches — try a different term, or check the full library in Figma.</p>
 
     <!-- COLORS -->
-    <section class="ds-section" id="colors">
+    <section class="ds-section view" id="colors">
       <div class="section-heading"><span class="section-num">01</span><h2>Colors</h2></div>
       <p class="section-intro">Our palette is anchored on MaintainX Blue, backed by a light neutral system and a small set of status and accent colors. Use tints (Blue-2 → Blue-5) for backgrounds and states, never for text on white.</p>
 
@@ -177,7 +179,7 @@
     </section>
 
     <!-- TYPOGRAPHY -->
-    <section class="ds-section" id="typography">
+    <section class="ds-section view" id="typography">
       <div class="section-heading"><span class="section-num">02</span><h2>Typography</h2></div>
       <p class="section-intro">One typeface, three weights. MaintainX uses <strong>Inter</strong> — free and open-source, no licensing needed — across the logo, headlines, and body copy, distinguished only by weight.</p>
 
@@ -242,7 +244,7 @@
     </section>
 
     <!-- VOICE & TONE -->
-    <section class="ds-section" id="voice">
+    <section class="ds-section view" id="voice">
       <div class="section-heading"><span class="section-num">03</span><h2>Voice &amp; Tone</h2></div>
       <p class="section-intro">Voice stays constant. Tone shifts by context. Both exist to serve one audience: frontline maintenance, repair, and operations professionals who need clear, reliable information — not marketing fluff.</p>
 
@@ -282,7 +284,7 @@
     </section>
 
     <!-- LOGOS -->
-    <section class="ds-section" id="logos">
+    <section class="ds-section view" id="logos">
       <div class="section-heading"><span class="section-num">04</span><h2>Logos</h2></div>
       <p class="section-intro">The MaintainX logo exists as a wordmark lockup (“MX-Logo”) and a standalone icon mark (“MX-Iso”), each in three colorways.</p>
 
@@ -310,7 +312,7 @@
     </section>
 
     <!-- ASSIST -->
-    <section class="ds-section" id="assist">
+    <section class="ds-section view" id="assist">
       <div class="section-heading"><span class="section-num">05</span><h2>MaintainX Assist</h2></div>
       <p class="section-intro">MaintainX Assist (and MaintainX AI) is a sub-brand with its own icon mark, wordmark lockups, and a small set of supporting UI elements (chips, buttons, chat labels) for use inside product.</p>
 
@@ -354,7 +356,7 @@
     </section>
 
     <!-- ICONS -->
-    <section class="ds-section" id="icons">
+    <section class="ds-section view" id="icons">
       <div class="section-heading"><span class="section-num">06</span><h2>Icons</h2></div>
       <p class="section-intro">MaintainX uses the <strong>Streamline</strong> icon library as its base icon set — organized into 56 categories, likely 1,000+ icons in total. A legacy "Sharp Line Icons" set is kept in the file for reference on older screens but is no longer the default.</p>
 
@@ -380,7 +382,7 @@
     </section>
 
     <!-- CLIENT LOGOS -->
-    <section class="ds-section" id="clients">
+    <section class="ds-section view" id="clients">
       <div class="section-heading"><span class="section-num">07</span><h2>Client &amp; Partner Logos</h2></div>
       <p class="section-intro">A library of 250+ client and integration-partner logos, each exported in a default and white colorway, organized by vertical/use for marketing collateral (case studies, homepage, integration pages).</p>
 
@@ -422,7 +424,7 @@
     </section>
 
     <!-- PRODUCT COMPOSITIONS -->
-    <section class="ds-section" id="compositions">
+    <section class="ds-section view" id="compositions">
       <div class="section-heading"><span class="section-num">08</span><h2>Product Compositions</h2></div>
       <p class="section-intro">Pre-built UI screenshot compositions (work orders, reporting, chat, parts, etc.) used across marketing pages and decks — organized as reusable parent components, then grouped "by use case" and "by industry" so you're not screenshotting the app from scratch every time.</p>
 
@@ -458,7 +460,7 @@
     </section>
 
     <!-- BADGES -->
-    <section class="ds-section" id="badges">
+    <section class="ds-section view" id="badges">
       <div class="section-heading"><span class="section-num">09</span><h2>Badges</h2></div>
       <p class="section-intro">Third-party review badges (G2, Capterra, GetApp, Software Advice) for use in marketing pages, decks, and sales collateral. These are refreshed as our standing changes, so pull the current set from Drive rather than an old export sitting in a deck.</p>
 
@@ -503,32 +505,25 @@
     if (document.documentElement.getAttribute('data-theme') === 'system') applyTheme('system');
   });
 
-  // Active nav highlighting
+  // View router — shows exactly one view (the intro overview grid, or a
+  // single section) at a time instead of an infinite single-page scroll.
   const links = document.querySelectorAll('.sidebar nav a[href^="#"]');
-  const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const setActive = () => {
-    let current = sections[0];
-    for (const s of sections) {
-      if (s.getBoundingClientRect().top - 80 <= 0) current = s;
+  const sectionIds = Array.from(document.querySelectorAll('main.content > section.ds-section')).map(s => s.id);
+  const introView = document.getElementById('view-intro');
+  const contentEl = document.querySelector('.content');
+  const showView = () => {
+    const hash = location.hash.replace('#', '');
+    const targetId = sectionIds.includes(hash) ? hash : null;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('view-active'));
+    (targetId ? document.getElementById(targetId) : introView).classList.add('view-active');
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + (targetId || '')));
+    if (searchInput) {
+      searchInput.value = '';
+      runSearch();
     }
-    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+    contentEl.scrollTop = 0;
   };
-  document.addEventListener('scroll', setActive, { passive: true });
-  setActive();
-
-  // Scroll-reveal
-  const revealTargets = document.querySelectorAll('section.ds-section');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-        revealObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  revealTargets.forEach(t => revealObserver.observe(t));
-  // Safety net: never leave a section permanently invisible (fast scrolls, reduced-motion, etc.)
-  setTimeout(() => revealTargets.forEach(t => t.classList.add('in-view')), 1200);
+  window.addEventListener('hashchange', showView);
 
   // Copy-to-clipboard on color swatches
   const toast = document.getElementById('toast');
@@ -554,30 +549,27 @@
     });
   });
 
-  // Live search across colors, logos, categories, badges
+  // Live search — filters within whichever view is currently open
   const searchInput = document.getElementById('search');
   const noResultsEl = document.getElementById('no-results');
-  const searchable = Array.from(document.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen'));
-  searchInput.addEventListener('input', () => {
+  const SEARCHABLE_SELECTOR = '.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen, .overview-card';
+  function runSearch() {
     const q = searchInput.value.trim().toLowerCase();
+    const activeView = document.querySelector('.view.view-active');
+    if (!activeView) return;
+    const items = Array.from(activeView.querySelectorAll(SEARCHABLE_SELECTOR));
     let anyVisible = false;
-    let anyHiddenSection = false;
-    searchable.forEach(el => {
+    items.forEach(el => {
       const text = (el.textContent || el.getAttribute('alt') || '').toLowerCase();
       const match = q === '' || text.includes(q);
       el.classList.toggle('hidden-by-search', !match);
       if (match) anyVisible = true;
     });
-    document.querySelectorAll('section.ds-section').forEach(sec => {
-      if (q === '') { sec.style.display = ''; return; }
-      const items = sec.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen');
-      if (items.length === 0) { sec.style.display = ''; return; }
-      const hasVisible = Array.from(items).some(it => !it.classList.contains('hidden-by-search'));
-      sec.style.display = hasVisible ? '' : 'none';
-      if (!hasVisible) anyHiddenSection = true;
-    });
-    noResultsEl.style.display = (q !== '' && !anyVisible) ? 'block' : 'none';
-  });
+    noResultsEl.style.display = (q !== '' && items.length > 0 && !anyVisible) ? 'block' : 'none';
+  }
+  searchInput.addEventListener('input', runSearch);
+
+  showView();
 </script>
 </body>
 </html>

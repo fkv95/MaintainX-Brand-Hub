@@ -460,22 +460,23 @@ header.page-header p {
   text-decoration: none;
 }
 
+/* View router — only one top-level view (the intro overview grid, or a
+   single section) is ever visible at a time; no infinite single-page scroll. */
+.view { display: none; }
+
+.view.view-active {
+  display: block;
+  animation: view-fade-in 0.2s var(--ease);
+}
+
+@keyframes view-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 section.ds-section {
-  margin-bottom: 72px;
-  padding-top: 32px;
-  border-top: var(--border);
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-}
-
-section.ds-section.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-section.ds-section:first-of-type {
-  border-top: none;
+  margin-bottom: 40px;
+  padding-top: 0;
 }
 
 .section-heading {
