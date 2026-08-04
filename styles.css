@@ -846,14 +846,6 @@ table.spec-table th {
   border: var(--border);
 }
 
-footer.page-footer {
-  color: var(--grey-1);
-  font-size: 0.8rem;
-  border-top: var(--border);
-  padding-top: 20px;
-  margin-top: 40px;
-}
-
 /* Toast (copy-to-clipboard feedback) */
 .toast {
   position: fixed;
