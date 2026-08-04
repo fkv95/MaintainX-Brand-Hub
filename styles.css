@@ -178,7 +178,7 @@ code {
 .topbar-brand {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   white-space: nowrap;
   align-self: stretch;
@@ -753,15 +753,37 @@ h3.group-title {
 }
 
 /* Icons reuse the same badge-item card, but at half the preview size —
-   badges keep the larger size above. */
+   badges keep the larger size above. Extra breathing room + hover-reveal
+   label are also icons-only, scoped below. */
 #icons .badge-item img {
   max-width: 46px;
 }
+
+#icons .badge-group { margin-bottom: 24px; }
+#icons .badge-group summary { padding: 18px 22px; }
+
+#icons .badge-group-grid {
+  gap: 24px;
+  padding: 28px;
+}
+
+#icons .badge-item { padding: 24px 16px; }
 
 .badge-item-label {
   font-size: 0.78rem;
   color: var(--dark-blue);
   line-height: 1.3;
+}
+
+#icons .badge-item-label {
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+
+#icons .badge-item:hover .badge-item-label,
+#icons .badge-item:focus-within .badge-item-label,
+#icons .badge-item.search-highlight .badge-item-label {
+  opacity: 1;
 }
 
 .badge-item-actions {
