@@ -3070,6 +3070,13 @@
         requestAnimationFrame(() => {
           target.scrollIntoView({ block: 'center' });
           target.classList.add('search-highlight');
+          const label = target.querySelector('.badge-item-label');
+          if (label) {
+            const rect = target.getBoundingClientRect();
+            label.style.left = (rect.left + rect.width / 2) + 'px';
+            label.style.top = (rect.top - 12) + 'px';
+            label.style.transform = 'translate(-50%, -100%)';
+          }
           setTimeout(() => target.classList.remove('search-highlight'), 1600);
         });
         return;
@@ -3188,6 +3195,19 @@
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.search-box')) closeSearch();
   });
+
+  const iconsSection = document.getElementById('icons');
+  if (iconsSection) {
+    iconsSection.addEventListener('mousemove', (e) => {
+      const item = e.target.closest('.badge-item');
+      if (!item) return;
+      const label = item.querySelector('.badge-item-label');
+      if (!label) return;
+      label.style.transform = 'translate(0, 0)';
+      label.style.left = (e.clientX + 16) + 'px';
+      label.style.top = (e.clientY + 16) + 'px';
+    });
+  }
 
   showView();
 </script>

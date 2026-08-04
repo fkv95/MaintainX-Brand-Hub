@@ -776,8 +776,19 @@ h3.group-title {
 }
 
 #icons .badge-item-label {
+  position: fixed;
+  left: 0;
+  top: -9999px;
+  z-index: 200;
   opacity: 0;
-  transition: opacity 0.15s var(--ease);
+  pointer-events: none;
+  transition: opacity 0.1s var(--ease);
+  background: var(--dark-blue);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
 }
 
 #icons .badge-item:hover .badge-item-label,
