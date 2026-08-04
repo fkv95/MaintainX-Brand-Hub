@@ -32,6 +32,7 @@
   --radius-sm: 8px;
   --radius-btn: 10px;
   --radius-pill: 999px;
+  --cta-radius: 3px;
   --border: 1px solid var(--grey-3);
   --shadow-sm: 0 1px 2px rgba(0,30,64,0.06), 0 1px 1px rgba(0,30,64,0.04);
   --shadow-md: 0 12px 24px -8px rgba(0,30,64,0.18), 0 4px 8px -4px rgba(0,30,64,0.08);
@@ -883,3 +884,57 @@ table.spec-table th {
   .search-wrap { margin: 0 -20px 8px; padding: 14px 20px; }
   header.page-header { margin: 0 -20px 40px; padding: 40px 20px 32px; }
 }
+
+/* BUTTONS / CTAs — Figma: Web Library > Button component */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+}
+
+.cta-row-dark {
+  background: var(--blue-1);
+  border-color: var(--blue-1);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--cta-radius);
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+}
+
+.cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.cta-primary { background: var(--blue-1); color: #fff; }
+.cta-secondary { border: 2px solid var(--blue-1); color: var(--blue-1); padding: 10px 22px; }
+.cta-white { background: #fff; color: var(--blue-1); }
+.cta-secondary-white { border: 2px solid #fff; color: #fff; padding: 10px 22px; }
+
+.cta-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+
+.cta-text svg { width: 12px; height: 12px; flex-shrink: 0; }

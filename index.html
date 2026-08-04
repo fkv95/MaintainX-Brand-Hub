@@ -56,6 +56,7 @@
         <li><a href="#" id="nav-intro">Introduction</a></li>
         <li><a href="#colors">Colors</a></li>
         <li><a href="#typography">Typography</a></li>
+        <li><a href="#buttons">Buttons</a></li>
         <li><a href="#voice">Voice &amp; Tone</a></li>
         <li><a href="#logos">Logos</a></li>
         <li><a href="#assist">MaintainX Assist</a></li>
@@ -95,6 +96,10 @@
       <a class="overview-card" href="#typography">
         <div class="preview"><span class="big-aa">Aa</span></div>
         <div class="text"><h4>Typography</h4><p>Inter, type scale, and capitalization rules.</p></div>
+      </a>
+      <a class="overview-card" href="#buttons">
+        <div class="preview"><button type="button" class="cta cta-primary" style="pointer-events:none; font-size:14px; padding:8px 16px;">Button</button></div>
+        <div class="text"><h4>Buttons</h4><p>Primary, Secondary, White, and text CTAs.</p></div>
       </a>
       <a class="overview-card" href="#voice">
         <div class="preview">
@@ -240,6 +245,51 @@
         <span class="pill">Asset Hub</span>
       </div>
       <div class="note">These are functional terms treated as proper nouns — always capitalized, exact term only (not descriptive variants), and never stacked back-to-back in one sentence.</div>
+    </section>
+
+    <!-- BUTTONS / CTAs -->
+    <section class="ds-section view" id="buttons">
+      <div class="section-heading"><h2>Buttons</h2></div>
+      <p class="section-intro">Five button styles cover every surface: solid Primary and outlined Secondary for light backgrounds; White and Secondary White for dark or colored backgrounds; and Tertiary text links for inline CTAs. Each is available with an optional trailing arrow.</p>
+
+      <h3 class="group-title">Primary &amp; Secondary — light backgrounds</h3>
+      <div class="cta-row">
+        <button type="button" class="cta cta-primary">Get Started</button>
+        <button type="button" class="cta cta-primary">
+          Get Started
+          <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="cta cta-secondary">Learn More</button>
+        <button type="button" class="cta cta-secondary">
+          Learn More
+          <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <h3 class="group-title">White &amp; Secondary White — dark or colored backgrounds</h3>
+      <div class="cta-row cta-row-dark">
+        <button type="button" class="cta cta-white">Get Started</button>
+        <button type="button" class="cta cta-white">
+          Get Started
+          <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="cta cta-secondary-white">Learn More</button>
+        <button type="button" class="cta cta-secondary-white">
+          Learn More
+          <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <h3 class="group-title">Tertiary — text link</h3>
+      <div class="cta-row">
+        <a href="#" class="cta-text" onclick="return false;">Text Button</a>
+        <a href="#" class="cta-text" onclick="return false;">
+          Text Button
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <p class="callout">Full component spec — every size and state (Hover, Focused, Disabled, Pressed) — lives in <a href="https://www.figma.com/design/FJLfyE9yA2VXa4YZbqLjM0/Web-Library?node-id=8427-25964" target="_blank" rel="noopener">Figma → Web Library → Button ↗</a>.</p>
     </section>
 
     <!-- VOICE & TONE -->
