@@ -575,6 +575,9 @@ h3.group-title {
   margin-bottom: 28px;
 }
 
+.swatch-grid-sm { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.swatch-grid-sm .swatch .fill { height: 140px; padding: 14px; }
+
 .swatch {
   border-radius: var(--radius);
   overflow: hidden;
