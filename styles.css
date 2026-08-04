@@ -36,6 +36,22 @@
   --shadow-sm: 0 1px 2px rgba(0,30,64,0.06), 0 1px 1px rgba(0,30,64,0.04);
   --shadow-md: 0 12px 24px -8px rgba(0,30,64,0.18), 0 4px 8px -4px rgba(0,30,64,0.08);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Fixed dark accent surface — stays dark in both themes, always paired with white text (buttons, toast) */
+  --accent-dark: #001E40;
+}
+
+/* Dark theme — these tokens are re-used as page chrome throughout the
+   stylesheet, so flipping them here re-themes the whole shell. Swatches in
+   the Colors section render their real hex values inline, so the
+   documented brand palette is unaffected by this override. */
+[data-theme-resolved="dark"] {
+  --white: #0B0F14;
+  --dark-blue: #EDF1F5;
+  --grey-1: #93A1B0;
+  --grey-2: #3A4552;
+  --grey-3: #1A212B;
+  --blue-5: #131B26;
 }
 
 * { box-sizing: border-box; }
@@ -49,6 +65,7 @@ body {
   background: var(--white);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 a { color: var(--blue-1); text-decoration: none; }
@@ -160,14 +177,24 @@ code {
 .topbar-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--dark-blue);
+  gap: 12px;
   white-space: nowrap;
 }
 
-.topbar-brand img { width: 22px; height: 22px; }
+.topbar-brand .brand-logo { height: 26px; width: auto; display: block; }
+
+.topbar-brand .brand-suffix {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--grey-1);
+  padding-left: 12px;
+  border-left: var(--border);
+}
+
+.hide-on-dark { display: inline-block; }
+.hide-on-light { display: none; }
+[data-theme-resolved="dark"] .hide-on-dark { display: none; }
+[data-theme-resolved="dark"] .hide-on-light { display: inline-block; }
 
 .topbar .search-box { flex: none; width: 240px; margin-left: auto; }
 
@@ -189,6 +216,39 @@ code {
 }
 
 .topbar-actions a:hover { border-color: var(--grey-2); color: var(--dark-blue); }
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: var(--border);
+  background: var(--white);
+}
+
+.theme-toggle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--grey-2);
+  cursor: pointer;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.theme-toggle button:hover { color: var(--dark-blue); }
+
+.theme-toggle button.active {
+  background: var(--grey-3);
+  color: var(--dark-blue);
+}
 
 /* Layout */
 .layout {
@@ -378,9 +438,9 @@ header.page-header p {
 }
 
 .btn-primary {
-  background: var(--dark-blue);
+  background: var(--accent-dark);
   color: #fff;
-  border: 1.5px solid var(--dark-blue);
+  border: 1.5px solid var(--accent-dark);
 }
 
 .btn-primary:hover {
@@ -675,7 +735,7 @@ footer.page-footer {
   left: 50%;
   bottom: 28px;
   transform: translate(-50%, 16px);
-  background: var(--dark-blue);
+  background: var(--accent-dark);
   color: #fff;
   font-size: 0.85rem;
   font-weight: 500;

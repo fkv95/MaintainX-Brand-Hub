@@ -8,20 +8,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<script>
+  (function () {
+    var stored = localStorage.getItem('mx-theme') || 'system';
+    var resolved = stored === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : stored;
+    document.documentElement.setAttribute('data-theme', stored);
+    document.documentElement.setAttribute('data-theme-resolved', resolved);
+  })();
+</script>
 </head>
 <body>
 
 <div class="app-shell">
 <div class="topbar">
-  <div class="topbar-brand"><img src="assets/assist/assist-iso-main.svg" alt="" /> MaintainX Design System</div>
+  <div class="topbar-brand">
+    <img src="assets/logos/logo-wordmark-black.svg" alt="MaintainX" class="brand-logo hide-on-dark" />
+    <img src="assets/logos/logo-wordmark-white.svg" alt="MaintainX" class="brand-logo hide-on-light" />
+    <span class="brand-suffix">Design System</span>
+  </div>
   <div class="search-box">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M15 15L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     <input id="search" type="text" placeholder="Search colors, logos, badges, categories…" autocomplete="off" />
   </div>
   <div class="topbar-actions">
-    <a href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library" target="_blank" rel="noopener" title="Figma Visual Library">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 1a3 3 0 0 0 0 6h2V1H6Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 7H6a3 3 0 1 0 0 6h2V7Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 1h2a3 3 0 1 1 0 6H8V1Z" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
-    </a>
+    <div class="theme-toggle" role="group" aria-label="Theme">
+      <button type="button" data-theme-choice="system" title="System theme" aria-label="System theme">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M6 14h4M8 11.5V14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" data-theme-choice="light" title="Light theme" aria-label="Light theme">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.3v1.6M8 13.1v1.6M2.6 8H1M15 8h-1.6M3.5 3.5l1.1 1.1M11.4 11.4l1.1 1.1M12.5 3.5l-1.1 1.1M4.6 11.4l-1.1 1.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" data-theme-choice="dark" title="Dark theme" aria-label="Dark theme">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M13.5 9.8A5.8 5.8 0 0 1 6.2 2.5a5.8 5.8 0 1 0 7.3 7.3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -80,7 +102,10 @@
         <div class="text"><h4>Voice &amp; Tone</h4><p>Voice, tone, values, and the CA3 writing framework.</p></div>
       </a>
       <a class="overview-card" href="#logos">
-        <div class="preview"><img src="assets/logos/logo-wordmark-black.svg" alt="" /></div>
+        <div class="preview">
+          <img src="assets/logos/logo-wordmark-black.svg" alt="" class="hide-on-dark" />
+          <img src="assets/logos/logo-wordmark-white.svg" alt="" class="hide-on-light" />
+        </div>
         <div class="text"><h4>Logos</h4><p>Wordmark and icon mark, black and white.</p></div>
       </a>
       <a class="overview-card" href="#assist">
@@ -456,6 +481,28 @@
 <div class="toast" id="toast"></div>
 
 <script>
+  // Theme toggle (system / light / dark)
+  const themeButtons = document.querySelectorAll('.theme-toggle [data-theme-choice]');
+  const applyTheme = (choice) => {
+    const resolved = choice === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : choice;
+    document.documentElement.setAttribute('data-theme', choice);
+    document.documentElement.setAttribute('data-theme-resolved', resolved);
+    themeButtons.forEach(b => b.classList.toggle('active', b.dataset.themeChoice === choice));
+  };
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const choice = btn.dataset.themeChoice;
+      localStorage.setItem('mx-theme', choice);
+      applyTheme(choice);
+    });
+  });
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'system');
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (document.documentElement.getAttribute('data-theme') === 'system') applyTheme('system');
+  });
+
   // Active nav highlighting
   const links = document.querySelectorAll('.sidebar nav a[href^="#"]');
   const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
