@@ -767,7 +767,16 @@ h3.group-title {
   padding: 28px;
 }
 
-#icons .badge-item { padding: 24px 16px; gap: 24px; }
+/* Icon PNGs are black-on-transparent by default, so the card must stay
+   literal white (not the --white token, which flips near-black in dark
+   mode) or the glyphs disappear. */
+#icons .badge-item {
+  padding: 24px 16px;
+  gap: 24px;
+  background: #fff;
+  aspect-ratio: 1 / 1;
+  justify-content: center;
+}
 
 .badge-item-label {
   font-size: 0.78rem;
