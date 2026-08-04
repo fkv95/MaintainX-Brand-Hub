@@ -167,9 +167,9 @@ code {
   z-index: 30;
   height: 64px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 24px;
-  padding: 0 16px;
+  padding: 0 16px 0 0;
   background: var(--white);
   border-bottom: var(--border);
 }
@@ -179,8 +179,13 @@ code {
   align-items: center;
   gap: 12px;
   white-space: nowrap;
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 0 24px;
+  border-right: var(--border);
   opacity: 1;
-  transition: opacity 0.15s var(--ease);
+  transition: opacity 0.15s var(--ease), background-color 0.15s var(--ease);
 }
 
 .topbar-brand:hover { opacity: 0.75; }
