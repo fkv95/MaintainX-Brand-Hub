@@ -886,43 +886,102 @@ table.spec-table th {
 }
 
 /* BUTTONS / CTAs — Figma: Web Library > Button component (all states) */
-.cta-group {
-  margin-bottom: 32px;
+#buttons h3.group-title {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: var(--border);
+}
+
+#buttons h3.group-title:first-of-type {
+  margin-top: 28px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.cta-card {
   border: var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   overflow: hidden;
+  margin-bottom: 8px;
 }
 
-.cta-group-dark { border-color: var(--blue-1); }
-
-.cta-matrix {
-  display: grid;
-  grid-template-columns: 72px repeat(3, 1fr);
-  gap: 12px;
-  align-items: center;
-  padding: 20px;
+.cta-demo {
+  padding: 40px;
   background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-.cta-group-dark .cta-matrix { background: var(--blue-1); }
+.cta-demo-dark { background: var(--blue-1); }
 
-.cta-matrix-head {
-  font-size: 11px;
+.cta-demo-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.cta-demo-row-label {
+  width: 76px;
+  flex-shrink: 0;
+  font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--grey-1);
 }
 
-.cta-group-dark .cta-matrix-head { color: var(--blue-3); }
+.cta-demo-dark .cta-demo-row-label { color: var(--blue-3); }
 
-.cta-matrix-label {
-  font-size: 12px;
-  font-weight: 600;
+.cta-showcode summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  font-weight: 500;
+  font-size: 0.9rem;
   color: var(--grey-1);
+  cursor: pointer;
+  background: var(--blue-5);
+  border-top: var(--border);
+  list-style: none;
 }
 
-.cta-group-dark .cta-matrix-label { color: var(--blue-3); }
+.cta-showcode summary::-webkit-details-marker { display: none; }
+
+.cta-showcode summary::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--grey-1);
+  border-bottom: 2px solid var(--grey-1);
+  transform: rotate(-45deg);
+  transition: transform 0.15s var(--ease);
+  flex-shrink: 0;
+}
+
+.cta-showcode[open] summary::before { transform: rotate(45deg); }
+.cta-showcode summary:hover { background: var(--blue-4); }
+
+.cta-showcode pre {
+  margin: 0;
+  padding: 20px 24px;
+  background: var(--dark-blue);
+  color: var(--blue-4);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.cta-showcode pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
 
 .cta {
   display: inline-flex;
