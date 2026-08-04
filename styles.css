@@ -767,7 +767,7 @@ h3.group-title {
   padding: 28px;
 }
 
-#icons .badge-item { padding: 24px 16px; }
+#icons .badge-item { padding: 24px 16px; gap: 24px; }
 
 .badge-item-label {
   font-size: 0.78rem;
