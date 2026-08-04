@@ -752,6 +752,11 @@ h3.group-title {
   height: auto;
 }
 
+/* 20% smaller than the base size — box/padding/CTA layout unchanged. */
+#badges .badge-item img {
+  max-width: 74px;
+}
+
 /* Icons reuse the same badge-item card, but at half the preview size —
    badges keep the larger size above. Extra breathing room + hover-reveal
    label are also icons-only, scoped below. */
@@ -1168,4 +1173,11 @@ table.spec-table th {
 .logo-rect.dark .logo-rect-ctas a:hover {
   color: #fff;
   border-color: rgba(255,255,255,0.4);
+}
+
+.lockup-label {
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin: 0 0 10px;
+  font-size: 0.95rem;
 }
