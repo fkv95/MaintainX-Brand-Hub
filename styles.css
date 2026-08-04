@@ -771,7 +771,7 @@ h3.group-title {
    literal white (not the --white token, which flips near-black in dark
    mode) or the glyphs disappear. */
 #icons .badge-item {
-  padding: 24px 16px;
+  padding: 24px 16px 46px;
   gap: 24px;
   aspect-ratio: 1 / 1;
   justify-content: center;
