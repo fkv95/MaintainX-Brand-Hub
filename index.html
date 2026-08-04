@@ -10,7 +10,7 @@
 <div class="layout">
 
   <aside class="sidebar">
-    <div class="brand">MaintainX <span class="x">Design System</span></div>
+    <div class="brand"><img src="assets/assist/assist-iso-main.svg" alt="" /> MaintainX <span class="x">Design System</span></div>
     <div class="tagline">The internal brand &amp; design bible</div>
 
     <nav>
@@ -37,9 +37,18 @@
 
   <main class="content">
     <header class="page-header">
-      <h1>MaintainX Design System</h1>
+      <span class="eyebrow">● Internal · v1</span>
+      <h1>MaintainX <span class="grad">Design System</span></h1>
       <p>The single source of truth for MaintainX's visual identity — colors, logos, iconography, and the assets we use across product and marketing. Sourced directly from the <code>Visual Library</code> Figma file. If it's not here, it's not on-brand yet.</p>
     </header>
+
+    <div class="search-wrap">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M15 15L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input id="search" type="text" placeholder="Search colors, logos, badges, categories…" autocomplete="off" />
+      </div>
+      <p class="no-results" id="no-results">No matches — try a different term, or check the full library in Figma.</p>
+    </div>
 
     <!-- COLORS -->
     <section class="ds-section" id="colors">
@@ -280,7 +289,10 @@
   </main>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
+  // Active nav highlighting
   const links = document.querySelectorAll('.sidebar nav a[href^="#"]');
   const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const setActive = () => {
@@ -292,6 +304,69 @@
   };
   document.addEventListener('scroll', setActive, { passive: true });
   setActive();
+
+  // Scroll-reveal
+  const revealTargets = document.querySelectorAll('section.ds-section');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealTargets.forEach(t => revealObserver.observe(t));
+  // Safety net: never leave a section permanently invisible (fast scrolls, reduced-motion, etc.)
+  setTimeout(() => revealTargets.forEach(t => t.classList.add('in-view')), 1200);
+
+  // Copy-to-clipboard on color swatches
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  const showToast = (msg) => {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+  };
+  document.querySelectorAll('.swatch').forEach(sw => {
+    const hexEl = sw.querySelector('.label .hex');
+    const fill = sw.querySelector('.fill');
+    if (!hexEl || !fill) return;
+    const hex = hexEl.textContent.split('→')[0].trim();
+    if (!/^#[0-9A-Fa-f]{3,8}$/.test(hex)) return;
+    const hint = document.createElement('span');
+    hint.className = 'copy-hint';
+    hint.textContent = 'Copy';
+    fill.appendChild(hint);
+    sw.addEventListener('click', () => {
+      navigator.clipboard.writeText(hex).then(() => showToast(`Copied ${hex}`)).catch(() => showToast(`${hex}`));
+    });
+  });
+
+  // Live search across colors, logos, categories, badges
+  const searchInput = document.getElementById('search');
+  const noResultsEl = document.getElementById('no-results');
+  const searchable = Array.from(document.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img'));
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    let anyVisible = false;
+    let anyHiddenSection = false;
+    searchable.forEach(el => {
+      const text = (el.textContent || el.getAttribute('alt') || '').toLowerCase();
+      const match = q === '' || text.includes(q);
+      el.classList.toggle('hidden-by-search', !match);
+      if (match) anyVisible = true;
+    });
+    document.querySelectorAll('section.ds-section').forEach(sec => {
+      if (q === '') { sec.style.display = ''; return; }
+      const items = sec.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img');
+      if (items.length === 0) { sec.style.display = ''; return; }
+      const hasVisible = Array.from(items).some(it => !it.classList.contains('hidden-by-search'));
+      sec.style.display = hasVisible ? '' : 'none';
+      if (!hasVisible) anyHiddenSection = true;
+    });
+    noResultsEl.style.display = (q !== '' && !anyVisible) ? 'block' : 'none';
+  });
 </script>
 </body>
 </html>
