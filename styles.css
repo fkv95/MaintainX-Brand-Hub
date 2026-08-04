@@ -1,0 +1,336 @@
+:root {
+  /* Primary */
+  --white: #FFFFFF;
+  --blue-1: #246CFF;
+  --blue-2: #6996FF;
+  --blue-3: #BED2FF;
+  --blue-4: #E8EFFF;
+  --blue-5: #F5F8FF;
+  --dark-blue: #001E40;
+  --secondary-dark-blue: #003161;
+
+  /* Secondary */
+  --grey-1: #4C6177;
+  --grey-2: #B4BBC5;
+  --grey-3: #E5E8EC;
+  --green-1: #2ED888;
+  --orange-1: #FFA945;
+  --copilot-gradient: linear-gradient(90deg, #246CFF 0%, #2ED888 100%);
+
+  /* Status */
+  --red-1: #FB523C;
+  --red-2: #FFEAE7;
+
+  /* Text & backgrounds */
+  --black: #000000;
+  --copilot-light-gradient: linear-gradient(90deg, #E8EFFF 0%, #E9FBF3 100%);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --sidebar-width: 260px;
+  --content-max: 960px;
+  --radius: 10px;
+  --border: 1px solid var(--grey-3);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--dark-blue);
+  background: var(--white);
+  line-height: 1.5;
+}
+
+a { color: var(--blue-1); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: var(--font-mono);
+  background: var(--blue-5);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--dark-blue);
+  color: var(--white);
+  padding: 28px 20px;
+}
+
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.sidebar .brand .x {
+  color: var(--blue-2);
+}
+
+.sidebar .tagline {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 28px;
+}
+
+.sidebar nav h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.45);
+  margin: 20px 0 8px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar nav a {
+  display: block;
+  color: rgba(255,255,255,0.82);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  margin-bottom: 2px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.content {
+  flex: 1;
+  padding: 56px 48px 120px;
+  max-width: calc(var(--content-max) + 96px);
+}
+
+header.page-header {
+  margin-bottom: 56px;
+}
+
+header.page-header h1 {
+  font-size: 2.4rem;
+  margin: 0 0 8px;
+}
+
+header.page-header p {
+  color: var(--grey-1);
+  font-size: 1.05rem;
+  max-width: 640px;
+}
+
+section.ds-section {
+  margin-bottom: 72px;
+  padding-top: 12px;
+  border-top: var(--border);
+}
+
+section.ds-section:first-of-type {
+  border-top: none;
+}
+
+section.ds-section h2 {
+  font-size: 1.6rem;
+  margin: 0 0 6px;
+}
+
+section.ds-section > .section-intro {
+  color: var(--grey-1);
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+h3.group-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--grey-1);
+  margin: 28px 0 14px;
+}
+
+/* Color swatches */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 18px;
+}
+
+.swatch {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: var(--border);
+}
+
+.swatch .fill {
+  height: 96px;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.swatch .fill code {
+  background: rgba(255,255,255,0.85);
+  font-size: 0.72rem;
+}
+
+.swatch .fill.on-dark code { background: rgba(0,0,0,0.35); color: #fff; }
+
+.swatch .label {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  background: var(--white);
+}
+
+.swatch .label .name { font-weight: 600; display: block; }
+.swatch .label .hex { color: var(--grey-1); font-size: 0.78rem; }
+
+/* Asset / reference cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.ref-card {
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: var(--blue-5);
+}
+
+.ref-card h4 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+}
+
+.ref-card p {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: var(--grey-1);
+}
+
+.ref-card .variants {
+  font-size: 0.78rem;
+  color: var(--grey-1);
+  margin-bottom: 10px;
+}
+
+.figma-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.badge-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.note {
+  border-left: 3px solid var(--orange-1);
+  background: #FFF7EC;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  margin: 16px 0;
+}
+
+.callout {
+  border-left: 3px solid var(--blue-1);
+  background: var(--blue-5);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  margin: 16px 0;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.pill {
+  background: var(--grey-3);
+  color: var(--dark-blue);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+table.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-top: 12px;
+}
+
+table.spec-table th, table.spec-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: var(--border);
+}
+
+table.spec-table th {
+  color: var(--grey-1);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gradient-swatch {
+  height: 96px;
+  border-radius: var(--radius);
+  border: var(--border);
+}
+
+footer.page-footer {
+  color: var(--grey-1);
+  font-size: 0.8rem;
+  border-top: var(--border);
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+@media (max-width: 860px) {
+  .layout { flex-direction: column; }
+  .sidebar { position: relative; height: auto; width: 100%; }
+  .content { padding: 32px 20px 80px; }
+}
