@@ -23,14 +23,14 @@
 
 <div class="app-shell">
 <div class="topbar">
-  <div class="topbar-brand">
+  <a href="#" class="topbar-brand" id="brand-home" aria-label="Back to Introduction">
     <img src="assets/logos/logo-wordmark-black.svg" alt="MaintainX" class="brand-logo hide-on-dark" />
     <img src="assets/logos/logo-wordmark-white.svg" alt="MaintainX" class="brand-logo hide-on-light" />
-    <span class="brand-suffix">Design System</span>
-  </div>
+  </a>
   <div class="search-box">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M15 15L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-    <input id="search" type="text" placeholder="Search colors, logos, badges, categories…" autocomplete="off" />
+    <input id="search" type="text" placeholder="Search MaintainX…" autocomplete="off" />
+    <div class="search-results" id="search-results"></div>
   </div>
   <div class="topbar-actions">
     <div class="theme-toggle" role="group" aria-label="Theme">
@@ -53,6 +53,7 @@
     <nav>
       <h4>Foundations</h4>
       <ul class="numbered">
+        <li><a href="#" id="nav-intro">Introduction</a></li>
         <li><a href="#colors">Colors</a></li>
         <li><a href="#typography">Typography</a></li>
         <li><a href="#voice">Voice &amp; Tone</a></li>
@@ -131,8 +132,6 @@
       </a>
     </div>
     </div>
-
-    <p class="no-results" id="no-results">No matches — try a different term, or check the full library in Figma.</p>
 
     <!-- COLORS -->
     <section class="ds-section view" id="colors">
@@ -517,13 +516,20 @@
     document.querySelectorAll('.view').forEach(v => v.classList.remove('view-active'));
     (targetId ? document.getElementById(targetId) : introView).classList.add('view-active');
     links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + (targetId || '')));
-    if (searchInput) {
-      searchInput.value = '';
-      runSearch();
-    }
+    closeSearch();
     contentEl.scrollTop = 0;
   };
   window.addEventListener('hashchange', showView);
+
+  // Logo and "Introduction" nav item both act as a home link, even when
+  // the hash is already empty (in which case hashchange never fires).
+  const goHome = (e) => {
+    e.preventDefault();
+    if (location.hash && location.hash !== '#') location.hash = '';
+    else showView();
+  };
+  document.getElementById('brand-home').addEventListener('click', goHome);
+  document.getElementById('nav-intro').addEventListener('click', goHome);
 
   // Copy-to-clipboard on color swatches
   const toast = document.getElementById('toast');
@@ -549,25 +555,76 @@
     });
   });
 
-  // Live search — filters within whichever view is currently open
+  // Global search — indexes every section up front (not just the active
+  // view) and jumps to whatever matches, with a Vercel-cmd-k-style dropdown.
   const searchInput = document.getElementById('search');
-  const noResultsEl = document.getElementById('no-results');
-  const SEARCHABLE_SELECTOR = '.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen, .overview-card';
-  function runSearch() {
-    const q = searchInput.value.trim().toLowerCase();
-    const activeView = document.querySelector('.view.view-active');
-    if (!activeView) return;
-    const items = Array.from(activeView.querySelectorAll(SEARCHABLE_SELECTOR));
-    let anyVisible = false;
-    items.forEach(el => {
-      const text = (el.textContent || el.getAttribute('alt') || '').toLowerCase();
-      const match = q === '' || text.includes(q);
-      el.classList.toggle('hidden-by-search', !match);
-      if (match) anyVisible = true;
+  const resultsEl = document.getElementById('search-results');
+  const escapeHtml = (s) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  function buildSearchIndex() {
+    const idx = [];
+    document.querySelectorAll('.overview-card').forEach(el => {
+      const label = el.querySelector('h4')?.textContent.trim();
+      if (!label) return;
+      idx.push({ text: (el.textContent || '').toLowerCase(), label, sectionLabel: 'Introduction', href: el.getAttribute('href') });
     });
-    noResultsEl.style.display = (q !== '' && items.length > 0 && !anyVisible) ? 'block' : 'none';
+    document.querySelectorAll('main.content > section.ds-section').forEach(sec => {
+      const sectionLabel = sec.querySelector('h2')?.textContent.trim() || sec.id;
+      sec.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen').forEach(el => {
+        const label = el.querySelector('.label .name')?.textContent.trim()
+          || el.querySelector('h4')?.textContent.trim()
+          || el.getAttribute('alt')
+          || (el.textContent || '').trim().split('\n')[0].trim().slice(0, 60);
+        if (!label) return;
+        idx.push({ text: (el.textContent || el.getAttribute('alt') || '').toLowerCase(), label, sectionLabel, href: '#' + sec.id });
+      });
+    });
+    return idx;
   }
-  searchInput.addEventListener('input', runSearch);
+  const searchIndex = buildSearchIndex();
+  let activeResultIndex = -1;
+
+  function closeSearch() {
+    searchInput.value = '';
+    resultsEl.classList.remove('show');
+    resultsEl.innerHTML = '';
+    activeResultIndex = -1;
+  }
+
+  function renderResults(q) {
+    if (!q) { resultsEl.classList.remove('show'); resultsEl.innerHTML = ''; return; }
+    const matches = searchIndex.filter(item => item.text.includes(q)).slice(0, 8);
+    activeResultIndex = -1;
+    resultsEl.innerHTML = matches.length
+      ? matches.map(m => `<a href="${m.href}" class="search-result"><span class="sr-label">${escapeHtml(m.label)}</span><span class="sr-section">${escapeHtml(m.sectionLabel)}</span></a>`).join('')
+      : '<div class="search-empty">No matches — try a different term.</div>';
+    resultsEl.classList.add('show');
+  }
+
+  searchInput.addEventListener('input', () => renderResults(searchInput.value.trim().toLowerCase()));
+
+  searchInput.addEventListener('keydown', (e) => {
+    const items = Array.from(resultsEl.querySelectorAll('.search-result'));
+    if (!items.length) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeResultIndex = e.key === 'ArrowDown'
+        ? Math.min(activeResultIndex + 1, items.length - 1)
+        : Math.max(activeResultIndex - 1, 0);
+      items.forEach((it, i) => it.classList.toggle('highlighted', i === activeResultIndex));
+      items[activeResultIndex].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      (items[activeResultIndex] || items[0]).click();
+    } else if (e.key === 'Escape') {
+      closeSearch();
+      searchInput.blur();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-box')) closeSearch();
+  });
 
   showView();
 </script>
