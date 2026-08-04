@@ -1130,6 +1130,16 @@ table.spec-table th {
   margin-bottom: 28px;
 }
 
+.logo-rect-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.logo-rect-row .logo-rect { padding: 40px; }
+.logo-rect-row .logo-rect img { max-height: 72px; max-width: 72px; }
+
 .logo-rect {
   position: relative;
   display: flex;
@@ -1143,7 +1153,7 @@ table.spec-table th {
 .logo-rect.light { background: #fff; }
 .logo-rect.dark { background: #000; border-color: #000; }
 
-.logo-rect img { height: 56px; width: auto; }
+.logo-rect img { height: auto; width: auto; max-height: 56px; max-width: 220px; }
 
 .logo-rect-ctas {
   position: absolute;
