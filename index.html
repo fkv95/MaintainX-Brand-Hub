@@ -56,7 +56,6 @@
         <li><a href="#" id="nav-intro">Introduction</a></li>
         <li><a href="#colors">Colors</a></li>
         <li><a href="#typography">Typography</a></li>
-        <li><a href="#voice">Voice &amp; Tone</a></li>
         <li><a href="#logos">Logos</a></li>
         <li><a href="#icons">Icons</a></li>
       </ul>
@@ -106,13 +105,6 @@
       <a class="overview-card" href="#buttons">
         <div class="preview"><button type="button" class="cta cta-primary" style="pointer-events:none; font-size:14px; padding:8px 16px;">Button</button></div>
         <div class="text"><h4>Buttons</h4><p>Primary, Secondary, White, and text CTAs.</p></div>
-      </a>
-      <a class="overview-card" href="#voice">
-        <div class="preview">
-          <span class="pill">Authoritative</span>
-          <span class="pill">Direct</span>
-        </div>
-        <div class="text"><h4>Voice &amp; Tone</h4><p>Voice, tone, values, and the CA3 writing framework.</p></div>
       </a>
       <a class="overview-card" href="#logos">
         <div class="preview">
@@ -255,74 +247,32 @@
 
 
 
-    <!-- VOICE & TONE -->
-    <section class="ds-section view" id="voice">
-      <div class="section-heading"><h2>Voice &amp; Tone</h2></div>
-      <p class="section-intro">Voice stays constant. Tone shifts by context. Both exist to serve one audience: frontline maintenance, repair, and operations professionals who need clear, reliable information — not marketing fluff.</p>
-
-      <h3 class="group-title">Voice — constant</h3>
-      <div class="voice-grid">
-        <div class="voice-card"><h4>Authoritative</h4><p>Knowledgeable, experienced, accurate, industry-savvy.</p></div>
-        <div class="voice-card"><h4>Helpful</h4><p>Focused on solutions, empowering, supportive.</p></div>
-        <div class="voice-card"><h4>Professional</h4><p>Clear, concise, reliable.</p></div>
-        <div class="voice-card"><h4>Relatable</h4><p>Friendly, approachable, down-to-earth.</p></div>
-      </div>
-
-      <h3 class="group-title">Tone — shifts by context</h3>
-      <div class="pill-list">
-        <span class="pill">Informative</span>
-        <span class="pill">Direct</span>
-        <span class="pill">Empathetic</span>
-        <span class="pill">Optimistic</span>
-        <span class="pill">Conversational</span>
-      </div>
-
-      <h3 class="group-title">The CA3 framework</h3>
-      <p style="color:var(--grey-1); font-size:0.9rem; max-width:680px;">Every piece of content should be <strong>Clear</strong>, <strong>Accurate</strong>, <strong>Actionable</strong>, and <strong>Discoverable</strong>. Active voice always. Simple words over long ones — "start" not "initiate," "show" not "demonstrate," "help" not "assist." Be humble: share knowledge like a peer, not a lecture. Never overclaim — say "decrease unplanned downtime," never "eliminate downtime."</p>
-
-      <table class="dodont">
-        <tr><th>Do</th><th>Don't</th></tr>
-        <tr>
-          <td class="do">"See exactly where downtime is costing you."</td>
-          <td class="dont">"Leveraging next-generation AI-powered solutions..."</td>
-        </tr>
-        <tr>
-          <td class="do">"Many maintenance teams see a 32% drop in unplanned downtime with a PM schedule."</td>
-          <td class="dont">"Trust us, we've built the most advanced algorithms in the industry."</td>
-        </tr>
-      </table>
-
-      <div class="note">Full writing rules (punctuation, numbers, quote formatting, trademark usage) live in the <code>maintainx-brand</code> Claude Skill in this repo — see <code>.claude/skills/maintainx-brand/SKILL.md</code>.</div>
-    </section>
-
-    <!-- LOGOS -->
+        <!-- LOGOS -->
     <section class="ds-section view" id="logos">
       <div class="section-heading"><h2>Logos</h2></div>
       <p class="section-intro">The MaintainX logo exists as a wordmark lockup (“MX-Logo”) and a standalone icon mark (“MX-Iso”), each in three colorways.</p>
 
-      <div class="logo-showcase logo-showcase-3">
-        <div class="logo-showcase-block light">
+      <div class="logo-rect-stack">
+        <div class="logo-rect light">
+          <div class="logo-rect-ctas">
+            <a href="assets/logos/logo-wordmark-default.svg" download>SVG</a>
+            <a href="assets/logos/logo-wordmark-default.png" download>PNG</a>
+          </div>
           <img src="assets/logos/logo-wordmark-default.svg" alt="MaintainX wordmark, default colorway" />
         </div>
-        <div class="logo-showcase-block light">
+        <div class="logo-rect light">
+          <div class="logo-rect-ctas">
+            <a href="assets/logos/logo-wordmark-solid-black.svg" download>SVG</a>
+            <a href="assets/logos/logo-wordmark-solid-black.png" download>PNG</a>
+          </div>
           <img src="assets/logos/logo-wordmark-solid-black.svg" alt="MaintainX wordmark, black" />
         </div>
-        <div class="logo-showcase-block dark">
+        <div class="logo-rect dark">
+          <div class="logo-rect-ctas">
+            <a href="assets/logos/logo-wordmark-white.svg" download>SVG</a>
+            <a href="assets/logos/logo-wordmark-white.png" download>PNG</a>
+          </div>
           <img src="assets/logos/logo-wordmark-white.svg" alt="MaintainX wordmark, white" />
-        </div>
-      </div>
-      <div class="logo-showcase-captions">
-        <div><strong>MX-Logo — Default</strong> — for light backgrounds — <a href="assets/logos/logo-wordmark-default.svg" download>Download SVG</a></div>
-        <div><strong>MX-Logo — Black</strong> — single-color use on light backgrounds — <a href="assets/logos/logo-wordmark-solid-black.svg" download>Download SVG</a></div>
-        <div><strong>MX-Logo — White</strong> — for dark or brand-colored backgrounds — <a href="assets/logos/logo-wordmark-white.svg" download>Download SVG</a></div>
-      </div>
-
-      <div class="card-grid">
-        <div class="ref-card">
-          <h4>MX × Autodesk lockup</h4>
-          <p>Co-branded partner lockup, used only for Autodesk-related integration collateral.</p>
-          <div class="variants">Colorways: Default · Black · White</div>
-          <a class="figma-link" href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library?node-id=2673-152710" target="_blank" rel="noopener">View &amp; export in Figma ↗</a>
         </div>
       </div>
     </section>
@@ -3140,8 +3090,6 @@
           </div>
         </div>
       </details>
-
-      <p class="callout">Full source library (including LinkedIn banner variants) lives in <a href="https://drive.google.com/drive/folders/1f-vHkJ-Q-le-fdjklFTjOPPv9sEgkX5F" target="_blank" rel="noopener">Drive → Review Badges ↗</a> — pull from there if a badge here looks stale.</p>
     </section>
   </main>
 </div>
@@ -3319,9 +3267,10 @@
     if (!e.target.closest('.search-box')) closeSearch();
   });
 
-  const iconsSection = document.getElementById('icons');
-  if (iconsSection) {
-    iconsSection.addEventListener('mousemove', (e) => {
+  ['icons', 'badges'].forEach((sectionId) => {
+    const sec = document.getElementById(sectionId);
+    if (!sec) return;
+    sec.addEventListener('mousemove', (e) => {
       const item = e.target.closest('.badge-item');
       if (!item) return;
       const label = item.querySelector('.badge-item-label');
@@ -3330,7 +3279,7 @@
       label.style.left = (e.clientX + 16) + 'px';
       label.style.top = (e.clientY + 16) + 'px';
     });
-  }
+  });
 
   showView();
 </script>
