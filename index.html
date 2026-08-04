@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MaintainX Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,6 +20,8 @@
       <h4>Foundations</h4>
       <ul>
         <li><a href="#colors">Colors</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#voice">Voice &amp; Tone</a></li>
         <li><a href="#logos">Logos</a></li>
         <li><a href="#assist">MaintainX Assist</a></li>
         <li><a href="#icons">Icons</a></li>
@@ -39,7 +44,7 @@
     <header class="page-header">
       <span class="eyebrow">● Internal · v1</span>
       <h1>MaintainX <span class="grad">Design System</span></h1>
-      <p>The single source of truth for MaintainX's visual identity — colors, logos, iconography, and the assets we use across product and marketing. Sourced directly from the <code>Visual Library</code> Figma file. If it's not here, it's not on-brand yet.</p>
+      <p>The single source of truth for MaintainX's visual identity — colors, typography, voice, logos, and iconography. Sourced from the official 2025 Brand Guidelines, the Writing Style Guide, and the <code>Visual Library</code> Figma file. If it's not here, it's not on-brand yet.</p>
     </header>
 
     <div class="search-wrap">
@@ -57,13 +62,13 @@
 
       <h3 class="group-title">Primary</h3>
       <div class="swatch-grid">
-        <div class="swatch"><div class="fill" style="background:#FFFFFF;"><code>#FFFFFF</code></div><div class="label"><span class="name">White</span><span class="hex">#FFFFFF</span></div></div>
-        <div class="swatch"><div class="fill on-dark" style="background:#246CFF;"><code>#246CFF</code></div><div class="label"><span class="name">Blue-1</span><span class="hex">#246CFF</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#FFFFFF;"><code>#FFFFFF</code></div><div class="label"><span class="name">Titanium White</span><span class="hex">#FFFFFF</span></div></div>
+        <div class="swatch"><div class="fill on-dark" style="background:#246CFF;"><code>#246CFF</code></div><div class="label"><span class="name">MaintainX Blue</span><span class="hex">#246CFF · Pantone 2728 C</span></div></div>
         <div class="swatch"><div class="fill on-dark" style="background:#6996FF;"><code>#6996FF</code></div><div class="label"><span class="name">Blue-2</span><span class="hex">#6996FF</span></div></div>
         <div class="swatch"><div class="fill" style="background:#BED2FF;"><code>#BED2FF</code></div><div class="label"><span class="name">Blue-3</span><span class="hex">#BED2FF</span></div></div>
         <div class="swatch"><div class="fill" style="background:#E8EFFF;"><code>#E8EFFF</code></div><div class="label"><span class="name">Blue-4</span><span class="hex">#E8EFFF</span></div></div>
         <div class="swatch"><div class="fill" style="background:#F5F8FF;"><code>#F5F8FF</code></div><div class="label"><span class="name">Blue-5</span><span class="hex">#F5F8FF</span></div></div>
-        <div class="swatch"><div class="fill on-dark" style="background:#001E40;"><code>#001E40</code></div><div class="label"><span class="name">Dark Blue</span><span class="hex">#001E40</span></div></div>
+        <div class="swatch"><div class="fill on-dark" style="background:#001E40;"><code>#001E40</code></div><div class="label"><span class="name">Hydraulic Blue</span><span class="hex">#001E40 · Pantone 4146 C</span></div></div>
         <div class="swatch"><div class="fill on-dark" style="background:#003161;"><code>#003161</code></div><div class="label"><span class="name">Secondary Dark Blue</span><span class="hex">#003161</span></div></div>
       </div>
 
@@ -72,10 +77,11 @@
         <div class="swatch"><div class="fill on-dark" style="background:#4C6177;"><code>#4C6177</code></div><div class="label"><span class="name">Grey-1</span><span class="hex">#4C6177</span></div></div>
         <div class="swatch"><div class="fill" style="background:#B4BBC5;"><code>#B4BBC5</code></div><div class="label"><span class="name">Grey-2</span><span class="hex">#B4BBC5</span></div></div>
         <div class="swatch"><div class="fill" style="background:#E5E8EC;"><code>#E5E8EC</code></div><div class="label"><span class="name">Grey-3</span><span class="hex">#E5E8EC</span></div></div>
-        <div class="swatch"><div class="fill" style="background:#2ED888;"><code>#2ED888</code></div><div class="label"><span class="name">Green-1</span><span class="hex">#2ED888</span></div></div>
-        <div class="swatch"><div class="fill" style="background:#FFA945;"><code>#FFA945</code></div><div class="label"><span class="name">Orange-1</span><span class="hex">#FFA945</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#2ED888;"><code>#2ED888</code></div><div class="label"><span class="name">Safety Green</span><span class="hex">#2ED888 · Pantone 7479 C</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#FFA945;"><code>#FFA945</code></div><div class="label"><span class="name">Safety Orange</span><span class="hex">#FFA945 · Pantone 804 C</span></div></div>
         <div class="swatch"><div class="fill on-dark" style="background:linear-gradient(135deg,#246CFF,#2ED888);"><code>Gradient</code></div><div class="label"><span class="name">CoPilot</span><span class="hex">#246CFF → #2ED888</span></div></div>
       </div>
+      <p class="callout">Official brand palette (Titanium White, MaintainX Blue, Hydraulic Blue, Safety Green, Safety Orange) per the 2025 Brand Guidelines. Remaining tints/greys/reds are extended UI tokens from the Figma <code>Visual Library</code>.</p>
 
       <h3 class="group-title">Status</h3>
       <div class="swatch-grid">
@@ -91,6 +97,111 @@
       </div>
 
       <p class="callout">Source: <a href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library?node-id=2673-152709" target="_blank" rel="noopener">Figma → Color Palette</a></p>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="ds-section" id="typography">
+      <h2>Typography</h2>
+      <p class="section-intro">One typeface, three weights. MaintainX uses <strong>Inter</strong> — free and open-source, no licensing needed — across the logo, headlines, and body copy, distinguished only by weight.</p>
+
+      <div class="type-specimen">
+        <div class="sample-label">Logo / Wordmark — Inter Bold &amp; Extra Bold</div>
+        <div style="font-weight:800; font-size:2.4rem; letter-spacing:0;">MaintainX</div>
+      </div>
+      <div class="type-specimen">
+        <div class="sample-label">Headline — Inter Bold</div>
+        <div style="font-weight:700; font-size:2rem; line-height:1.1; letter-spacing:0;">Top-Rated Maintenance Management Software</div>
+        <div class="sample-meta">110% leading · 0% letter-spacing</div>
+      </div>
+      <div class="type-specimen">
+        <div class="sample-label">Body — Inter Regular &amp; Medium</div>
+        <div style="font-weight:400; font-size:1.05rem; line-height:1.2; max-width:640px;">To create a world where equipment downtime is a thing of the past, achieved through AI-driven solutions, optimized workflows, and interconnected data.</div>
+        <div class="sample-meta">120% leading · 0% letter-spacing</div>
+      </div>
+
+      <h3 class="group-title">Capitalization — marketing content</h3>
+      <div class="cap-table">
+        <div class="cap-col">
+          <div class="cap-row do"><span class="mark">✓</span> Sentence case for H1, H2, subheads, body</div>
+          <div class="cap-row do"><span class="mark">✓</span> Title case for CTAs, buttons, blog/press headlines</div>
+          <div class="cap-row do"><span class="mark">✓</span> Acronyms stay capped: PM, CMMS, MTTR, OEE</div>
+        </div>
+        <div class="cap-col">
+          <div class="cap-row dont"><span class="mark">✗</span> Title Case For Every Headline</div>
+          <div class="cap-row dont"><span class="mark">✗</span> lowercase button copy</div>
+        </div>
+      </div>
+
+      <h3 class="group-title">Capitalization — product UI (this design system included)</h3>
+      <p style="color:var(--grey-1); font-size:0.9rem; max-width:680px;">Simplified AP-style: capitalize nouns/verbs/adjectives/pronouns, lowercase articles/conjunctions/short prepositions. When unsure, default to lowercase.</p>
+      <div class="cap-table">
+        <div class="cap-col">
+          <div class="cap-row do"><span class="mark">✓</span> Title case: page titles, section headers, nav, buttons (≤3 words), modals</div>
+          <div class="cap-row do"><span class="mark">✓</span> Sentence case: body, helper text, tooltips, errors, links</div>
+        </div>
+        <div class="cap-col">
+          <div class="cap-row dont"><span class="mark">✗</span> Create a work order <em>(should be "Create a Work Order")</em></div>
+          <div class="cap-row dont"><span class="mark">✗</span> Maintenance Work Order <em>(capitalize the exact term only)</em></div>
+        </div>
+      </div>
+
+      <div class="pill-list">
+        <span class="pill">Asset</span>
+        <span class="pill">Work Order</span>
+        <span class="pill">Work Request</span>
+        <span class="pill">Procedure</span>
+        <span class="pill">Part</span>
+        <span class="pill">Parts Inventory</span>
+        <span class="pill">Purchase Orders</span>
+        <span class="pill">Locations</span>
+        <span class="pill">Vendors</span>
+        <span class="pill">Automations</span>
+        <span class="pill">Meters</span>
+        <span class="pill">MaintainX CoPilot</span>
+        <span class="pill">Report Builder</span>
+        <span class="pill">Asset Hub</span>
+      </div>
+      <div class="note">These are functional terms treated as proper nouns — always capitalized, exact term only (not descriptive variants), and never stacked back-to-back in one sentence.</div>
+    </section>
+
+    <!-- VOICE & TONE -->
+    <section class="ds-section" id="voice">
+      <h2>Voice &amp; Tone</h2>
+      <p class="section-intro">Voice stays constant. Tone shifts by context. Both exist to serve one audience: frontline maintenance, repair, and operations professionals who need clear, reliable information — not marketing fluff.</p>
+
+      <h3 class="group-title">Voice — constant</h3>
+      <div class="voice-grid">
+        <div class="voice-card"><h4>Authoritative</h4><p>Knowledgeable, experienced, accurate, industry-savvy.</p></div>
+        <div class="voice-card"><h4>Helpful</h4><p>Focused on solutions, empowering, supportive.</p></div>
+        <div class="voice-card"><h4>Professional</h4><p>Clear, concise, reliable.</p></div>
+        <div class="voice-card"><h4>Relatable</h4><p>Friendly, approachable, down-to-earth.</p></div>
+      </div>
+
+      <h3 class="group-title">Tone — shifts by context</h3>
+      <div class="pill-list">
+        <span class="pill">Informative</span>
+        <span class="pill">Direct</span>
+        <span class="pill">Empathetic</span>
+        <span class="pill">Optimistic</span>
+        <span class="pill">Conversational</span>
+      </div>
+
+      <h3 class="group-title">The CA3 framework</h3>
+      <p style="color:var(--grey-1); font-size:0.9rem; max-width:680px;">Every piece of content should be <strong>Clear</strong>, <strong>Accurate</strong>, <strong>Actionable</strong>, and <strong>Discoverable</strong>. Active voice always. Simple words over long ones — "start" not "initiate," "show" not "demonstrate," "help" not "assist." Be humble: share knowledge like a peer, not a lecture. Never overclaim — say "decrease unplanned downtime," never "eliminate downtime."</p>
+
+      <table class="dodont">
+        <tr><th>Do</th><th>Don't</th></tr>
+        <tr>
+          <td class="do">"See exactly where downtime is costing you."</td>
+          <td class="dont">"Leveraging next-generation AI-powered solutions..."</td>
+        </tr>
+        <tr>
+          <td class="do">"Many maintenance teams see a 32% drop in unplanned downtime with a PM schedule."</td>
+          <td class="dont">"Trust us, we've built the most advanced algorithms in the industry."</td>
+        </tr>
+      </table>
+
+      <div class="note">Full writing rules (punctuation, numbers, quote formatting, trademark usage) live in the <code>maintainx-brand</code> Claude Skill in this repo — see <code>.claude/skills/maintainx-brand/SKILL.md</code>.</div>
     </section>
 
     <!-- LOGOS -->
@@ -332,7 +443,7 @@
     const hexEl = sw.querySelector('.label .hex');
     const fill = sw.querySelector('.fill');
     if (!hexEl || !fill) return;
-    const hex = hexEl.textContent.split('→')[0].trim();
+    const hex = hexEl.textContent.split(/→|·/)[0].trim();
     if (!/^#[0-9A-Fa-f]{3,8}$/.test(hex)) return;
     const hint = document.createElement('span');
     hint.className = 'copy-hint';
@@ -346,7 +457,7 @@
   // Live search across colors, logos, categories, badges
   const searchInput = document.getElementById('search');
   const noResultsEl = document.getElementById('no-results');
-  const searchable = Array.from(document.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img'));
+  const searchable = Array.from(document.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen'));
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
     let anyVisible = false;
@@ -359,7 +470,7 @@
     });
     document.querySelectorAll('section.ds-section').forEach(sec => {
       if (q === '') { sec.style.display = ''; return; }
-      const items = sec.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img');
+      const items = sec.querySelectorAll('.swatch, .ref-card, .pill, .badge-grid img, .voice-card, .type-specimen');
       if (items.length === 0) { sec.style.display = ''; return; }
       const hasVisible = Array.from(items).some(it => !it.classList.contains('hidden-by-search'));
       sec.style.display = hasVisible ? '' : 'none';
