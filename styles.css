@@ -751,6 +751,12 @@ h3.group-title {
   height: auto;
 }
 
+/* Icons reuse the same badge-item card, but at half the preview size —
+   badges keep the larger size above. */
+#icons .badge-item img {
+  max-width: 46px;
+}
+
 .badge-item-label {
   font-size: 0.78rem;
   color: var(--dark-blue);
