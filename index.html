@@ -10,65 +10,101 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+<div class="topbar">
+  <div class="topbar-brand"><img src="assets/assist/assist-iso-main.svg" alt="" /> MaintainX Design System</div>
+  <div class="search-box">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M15 15L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <input id="search" type="text" placeholder="Search colors, logos, badges, categories…" autocomplete="off" />
+  </div>
+  <div class="topbar-actions">
+    <a href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library" target="_blank" rel="noopener" title="Figma Visual Library">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 1a3 3 0 0 0 0 6h2V1H6Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 7H6a3 3 0 1 0 0 6h2V7Z" stroke="currentColor" stroke-width="1.2"/><path d="M8 1h2a3 3 0 1 1 0 6H8V1Z" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
+    </a>
+  </div>
+</div>
+
 <div class="layout">
 
   <aside class="sidebar">
-    <div>
-      <div class="brand"><img src="assets/logos/logo-wordmark-white.svg" alt="MaintainX" class="brand-logo" /></div>
-
-      <nav>
-        <h4>Contents</h4>
-        <ul class="numbered">
-          <li><a href="#colors"><span class="num">01</span>Colors</a></li>
-          <li><a href="#typography"><span class="num">02</span>Typography</a></li>
-          <li><a href="#voice"><span class="num">03</span>Voice &amp; Tone</a></li>
-          <li><a href="#logos"><span class="num">04</span>Logos</a></li>
-          <li><a href="#assist"><span class="num">05</span>MaintainX Assist</a></li>
-          <li><a href="#icons"><span class="num">06</span>Icons</a></li>
-          <li><a href="#clients"><span class="num">07</span>Client &amp; Partner Logos</a></li>
-          <li><a href="#compositions"><span class="num">08</span>Product Compositions</a></li>
-          <li><a href="#badges"><span class="num">09</span>Badges</a></li>
-        </ul>
-        <h4>Source</h4>
-        <ul>
-          <li><a href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library" target="_blank" rel="noopener">Figma: Visual Library ↗</a></li>
-          <li><a href="https://drive.google.com/drive/folders/1f-vHkJ-Q-le-fdjklFTjOPPv9sEgkX5F" target="_blank" rel="noopener">Drive: Review Badges ↗</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="sidebar-credit">MAINTAINX BRAND<br />FOR CLAUDE CODE<br />V1 · 2026</div>
+    <nav>
+      <h4>Foundations</h4>
+      <ul class="numbered">
+        <li><a href="#colors"><span class="num">01</span>Colors</a></li>
+        <li><a href="#typography"><span class="num">02</span>Typography</a></li>
+        <li><a href="#voice"><span class="num">03</span>Voice &amp; Tone</a></li>
+        <li><a href="#logos"><span class="num">04</span>Logos</a></li>
+        <li><a href="#assist"><span class="num">05</span>MaintainX Assist</a></li>
+        <li><a href="#icons"><span class="num">06</span>Icons</a></li>
+      </ul>
+      <h4>Marketing &amp; Product</h4>
+      <ul class="numbered">
+        <li><a href="#clients"><span class="num">07</span>Client &amp; Partner Logos</a></li>
+        <li><a href="#compositions"><span class="num">08</span>Product Compositions</a></li>
+        <li><a href="#badges"><span class="num">09</span>Badges</a></li>
+      </ul>
+      <h4>Source</h4>
+      <ul>
+        <li><a href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library" target="_blank" rel="noopener">Figma: Visual Library ↗</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1f-vHkJ-Q-le-fdjklFTjOPPv9sEgkX5F" target="_blank" rel="noopener">Drive: Review Badges ↗</a></li>
+      </ul>
+    </nav>
   </aside>
 
   <main class="content">
     <header class="page-header">
-      <span class="eyebrow">MaintainX Brand System</span>
-      <h1>Build every page,<br /><span class="grad">on brand.</span></h1>
+      <h1>MaintainX Design System</h1>
       <p>Colors, typography, voice, logos, and iconography — sourced from the official 2025 Brand Guidelines, the Writing Style Guide, and the <code>Visual Library</code> Figma file. Copy the tokens. Follow the rules. Ship it.</p>
-
-      <div class="hero-actions">
-        <a class="btn-primary" href="https://www.figma.com/design/X3ZZ76xBFCPB5wZ6f9QbF4/Visual-Library" target="_blank" rel="noopener">View Figma Source</a>
-        <a class="btn-secondary" href=".claude/skills/maintainx-brand/SKILL.md">View Brand Skill</a>
-      </div>
-
-      <div class="trusted-by">
-        <span class="trusted-label">Trusted by 13,000+ companies</span>
-        <span class="trusted-name">Volvo</span>
-        <span class="trusted-name">McDonald's</span>
-        <span class="trusted-name">Duracell</span>
-        <span class="trusted-name">DHL</span>
-        <span class="trusted-name">Titan America</span>
-        <span class="trusted-name">Cintas</span>
-      </div>
     </header>
 
-    <div class="search-wrap">
-      <div class="search-box">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M15 15L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <input id="search" type="text" placeholder="Search colors, logos, badges, categories…" autocomplete="off" />
-      </div>
-      <p class="no-results" id="no-results">No matches — try a different term, or check the full library in Figma.</p>
+    <div class="overview-grid">
+      <a class="overview-card" href="#colors">
+        <div class="preview">
+          <span class="dot" style="background:#246CFF;"></span>
+          <span class="dot" style="background:#001E40;"></span>
+          <span class="dot" style="background:#2ED888;"></span>
+          <span class="dot" style="background:#FFA945;"></span>
+        </div>
+        <div class="text"><h4>Colors</h4><p>MaintainX Blue, Hydraulic Blue, and the full palette.</p></div>
+      </a>
+      <a class="overview-card" href="#typography">
+        <div class="preview"><span class="big-aa">Aa</span></div>
+        <div class="text"><h4>Typography</h4><p>Inter, type scale, and capitalization rules.</p></div>
+      </a>
+      <a class="overview-card" href="#voice">
+        <div class="preview">
+          <span class="pill">Authoritative</span>
+          <span class="pill">Direct</span>
+        </div>
+        <div class="text"><h4>Voice &amp; Tone</h4><p>Voice, tone, values, and the CA3 writing framework.</p></div>
+      </a>
+      <a class="overview-card" href="#logos">
+        <div class="preview"><img src="assets/logos/logo-wordmark-black.svg" alt="" /></div>
+        <div class="text"><h4>Logos</h4><p>Wordmark and icon mark, black and white.</p></div>
+      </a>
+      <a class="overview-card" href="#assist">
+        <div class="preview"><img src="assets/assist/assist-iso-main.svg" alt="" style="height:56px;width:56px;" /></div>
+        <div class="text"><h4>MaintainX Assist</h4><p>Assist and AI sub-brand marks and lockups.</p></div>
+      </a>
+      <a class="overview-card" href="#icons">
+        <div class="preview"><span class="stat">1,000+</span></div>
+        <div class="text"><h4>Icons</h4><p>Streamline icon library, 56 categories.</p></div>
+      </a>
+      <a class="overview-card" href="#clients">
+        <div class="preview"><span class="stat">250+</span></div>
+        <div class="text"><h4>Client &amp; Partner Logos</h4><p>Logos by industry and use case.</p></div>
+      </a>
+      <a class="overview-card" href="#compositions">
+        <div class="preview"><span class="stat">UI</span></div>
+        <div class="text"><h4>Product Compositions</h4><p>Reusable UI screenshots for marketing.</p></div>
+      </a>
+      <a class="overview-card" href="#badges">
+        <div class="preview"><img src="assets/badges/leader.svg" alt="" style="height:64px;" /></div>
+        <div class="text"><h4>Badges</h4><p>Current G2 and review site badges.</p></div>
+      </a>
     </div>
+
+    <p class="no-results" id="no-results">No matches — try a different term, or check the full library in Figma.</p>
 
     <!-- COLORS -->
     <section class="ds-section" id="colors">
